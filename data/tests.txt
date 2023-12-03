@@ -1,0 +1,55 @@
+S -> aSbS
+S ->
+S
+, True
+ab, True
+aabb, True
+a, False
+abb, False
+
+S -> SS
+S -> (S)
+S ->
+S
+, True
+(), True
+(()), True
+(, False
+)(, False
+
+A -> aA
+A -> b
+A
+b, True
+ab, True
+aab, True
+a, False
+ba, False
+
+B -> 0B
+B -> 1B
+B ->
+B
+, True
+0, True
+1, True
+00, True
+10, True
+01, True
+110, True
+1010, True
+12, False
+2, False
+
+L -> [ L ]
+L -> [ ]
+L ->
+L
+, True
+[], False
+[[]], False
+[[[]]], False
+[, False
+], False
+[[], False
+[[[]], False
