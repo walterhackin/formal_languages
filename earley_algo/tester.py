@@ -1,4 +1,5 @@
 import unittest
+from sys import argv
 
 from src.EarleyAlgorithm import EarleyParser
 from src.Grammar import Rule, Grammar
@@ -48,10 +49,8 @@ class TestEarleyParserFormattedOutput(unittest.TestCase):
         test_results = [self.run_test(parser, word, should_accept) for word, should_accept in test_cases]
         return "\n".join(test_results)
 
-    def test_grammars(self):
-        self.parse_data("tests.txt")
-        m = Grammar([Rule('S', ['a', 'S', 'b', 'S']), Rule('S', [])], 'S')
-        grammars_and_tests = self.parse_data("data/tests.txt")
+    def test_grammars(self, path = 'data/tests.txt'):
+        grammars_and_tests = self.parse_data(path)
 
         for grammar_name, (grammar, test_cases) in grammars_and_tests.items():
             print(f"\nTesting {grammar_name}:")
@@ -61,4 +60,8 @@ class TestEarleyParserFormattedOutput(unittest.TestCase):
 
 if __name__ == "__main__":
     test_suite = TestEarleyParserFormattedOutput()
-    test_suite.test_grammars()
+    if len(argv) > 1 and argv[1] == '-i':
+        path = argv[2]
+        test_suite.test_grammars(path)
+    else:
+        test_suite.test_grammars()
