@@ -8,38 +8,39 @@ a, False
 abb, False
 
 S -> SS
-S -> (S)
+S -> aSb
 S ->
 S
 , True
-(), True
-(()), True
-(, False
-)(, False
+aa, False
+aabb, True
+a, False
+ba, False
 
 A -> aA
 A -> b
+A ->
 A
 b, True
 ab, True
 aab, True
-a, False
+a, True
 ba, False
 
-B -> 0B
-B -> 1B
+B -> aB
+B -> bB
 B ->
 B
 , True
-0, True
-1, True
-00, True
-10, True
-01, True
-110, True
-1010, True
-12, False
-2, False
+a, True
+b, True
+aa, True
+ba, True
+ab, True
+bba, True
+baba, True
+bc, False
+b, True
 
 L -> [ L ]
 L -> [ ]

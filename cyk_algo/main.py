@@ -1,8 +1,8 @@
 from sys import argv
 
-from src.EarleyAlgorithm import EarleyParser
+from src.CYK_Algorithm import CYKParser
 from src.Grammar import Rule, Grammar
-from debug.Debugger import EarleyParserDebug
+from debug.Debugger import CYKParserDebug
 
 def start_program(debug=False):
     task_data = open('data/sample.txt', 'r')
@@ -24,9 +24,9 @@ def start_program(debug=False):
         words.append((task_data.readline()).strip())
     grammar = Grammar(rules, start_symbol)
     if debug:
-        parser = EarleyParserDebug(grammar)
+        parser = CYKParserDebug(grammar)
     else:
-        parser = EarleyParser(grammar)
+        parser = CYKParser(grammar)
     for word in words:
         if parser.parse(word):
             print("Yes")
